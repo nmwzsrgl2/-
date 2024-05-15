@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ch" >
+
+<head>
+    <link rel="stylesheet" href="/static/css/login.css">
+    <script src="/static/js/login.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="login" onkeydown="keyboardsubmit(event)">
+        <h1>登录</h1>
+        <form method="post" action="/post" id='login'>
+            <!--method="get"表示提交数据的方式为GET，action="/action"表示提交到/log路由-->
+            <input type="text" placeholder="用户名" name="username" class="input" id="username" required>
+            <br>
+            <input type="password" placeholder="密码" name="password" class="input" id="password" required>
+            <br>
+            <input type="button" value="登录" class="btn" id="submit" onclick="login()">
+            <a href="/login/register" target="_blank"><input type="button" value="注册" class="btn" id="register"></a>
+        </form>
+        <span onclick="checkbox()"><input type="checkbox" name="remember" id="remember" value="false">免密密码</span>
+        <a href="/login/forget" target="_blank" class="forget">忘记密码</a>
+    </div>
+
+</body>
+<script>
+    function login() {
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        if (username == '' || password == '') {
+            alert('用户名或密码不能为空！');
+        } else {
+            $.ajax({
+                type: 'post',
+                url: '/login/post',
+                data: {
+                    username: username,
+                    password: password,
+                    remember: document.getElementById('remember').value
+                },
+                success: function(data) {
+                    if (data.status == 200) {
+                        window.location.href = data.url;
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                },error: function(xhr, type,data) {
+                    alert('连接服务器失败！');
+                }
+            });
+        }
+
+    }
+</script>
+</html>

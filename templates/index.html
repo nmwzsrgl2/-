@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+    <!--  popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.net/popper.js/2.9.3/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/index.js"></script>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills" id='header'>
+                <li class="nav-item"><a href="#" class="nav-link " id='header_1'>首页</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="scrollToHeight()" id='header_2'>推荐</a></li>
+                <li class="nav-item"><a class="nav-link" onclick="show_hide()" id='header_3'>介绍</a></li>
+                <li class="nav-item"><a class="nav-link" id='header_4' onclick="incudice()">关于</a></li>
+                <li class="nav-item"><a href="/exit" class="nav-link">退出</a></li>
+            </ul>
+        </header>
+        <div class="video-banner">
+            <video autoplay muted loop playsinline>
+                <source src="/static/images/23011-332483109_large.mp4" type="video/mp4">
+                <source src="your-video-file.webm" type="video/webm">
+                您的浏览器不支持视频标签。
+            </video>
+        </div>
+        <div class="banner_content">
+            <h1>Hello World!</h1>
+            <h4>你好，世界!</h4>
+            <h2 class="h2_title">欢迎来到我的博客</h2>
+        </div>
+    </div>
+
+
+
+    <div class="table">
+        <h2 class="div_title">>>热门景点推荐</h2>
+        <table>
+            <thead>
+                <tr>
+                    <td class="td_title">
+                        <a href="#">
+                            <img src="/static//images/arc-de-triomphe-5432392_960_720.jpg" alt="凯旋门">
+                            <span>凯旋门</span>
+                        </a>
+                    </td>
+                    <td class="td_title">
+                        <a href="#/">
+                            <img src="/static/images/montmartre-7150549_960_720.jpg" alt="蒙特梭尔">
+                            <span>蒙特梭尔</span>
+                        </a>
+                    </td>
+                    <td class="td_title">
+                        <a href="#">
+                            <img src="/static/images/paris-7651738_1280.webp" alt="巴黎">
+                            <span>巴黎</span>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_title">
+                        <a href="#">
+                            <img src="/static/images/switzerland-670191_1280.jpg" alt="瑞士">
+                            <span>瑞士</span></a>
+                    </td>
+                    <td class="td_title">
+                        <a href="#">
+                            <img src="/static/images/taj-mahal-4109110_1280.jpg" alt="塔吉玛尔">
+                            <span>塔吉玛尔</span>
+                        </a>
+                    </td>
+                    <td class="td_title">
+                        <a href="#">
+                            <img src="/static/images/temple-of-heaven-3675835_960_720.jpg" alt="天坛">
+                            <span>天坛</span>
+                        </a>
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+
+
+    <div class="show">
+        <h2 class="div_title2">>>热门景点介绍</h2>
+        <ul>
+            <li id='li_first'>
+                <img src="/static/images/usa-1183579_1280.jpg" class="images">
+                <p>美国大峡谷是一个举世闻名的自然奇观，位于西部亚利桑那州西北部的凯巴布高原上，总面积2724.7平方公里。由于科罗拉多河穿流其中，故又名科罗拉多大峡谷，它是联合国教科文组织选为受保护的天然遗产之一。大峡谷于1540年被一支远征队发现。1919年,威尔逊总统将大峡谷地区辟为“大峡谷国家公园”(Grand
+                    Canyon National
+                    Park)。大峡谷只有从高空俯瞰,才有可能完整地欣赏这条大地的裂缝。飞越百条激流的科罗拉多河从大峡谷谷底流过,就是这位江河巨人,在500万年前,以它天才的想象力和非凡的意志力,切割高原,重整河山,穿岩凿石,颠覆时空,写下了这部长约443公里,平均宽度16公里,深度1.6公里的大峡谷传奇。有趣的是,居住在这座大峡谷底部的印第安人,他们的语汇中没有大峡谷这个词,便依据他们的思维方式造了个新词,这新词恰巧对大峡谷作了最生动的描述：“倒着长的山”。
+                </p>
+            </li>
+            </br>
+            <li>
+                <img src="/static/images/heart-1492445_1280.jpg" class="images">
+                <p>世界上有一个最大最长的珊瑚礁群，它就是有名的大堡礁- Great Barrier
+                    Reef。它纵贯蜿蜒于澳洲的东海岸，全长2011公里，最宽处161公里。南端最远离海岸241公里，北端离海岸仅16公里。在落潮时，部分的珊瑚礁露出水面形成珊瑚岛。大堡礁，全球最大的珊瑚礁群，延伸于澳大利亚东北岸外的珊瑚海中，如同一道天然防坡堤，护卫着昆士兰州东海岸，使之免受狂涛巨浪的冲击。它南北长达2013千米，北窄南宽，由数千个珊瑚礁体组成，总面积20.7万平方千米。低潮时，约有8万平方千米露出水面;高潮时，大部分没入水下，剩下数百个岛礁忽隐忽现。大堡礁的珊瑚多达400余种，在温暖的清澈的海水中，呈现各种不同的色彩和形状。礁体多为圆形或椭圆形，大礁套小礁，环礁围着风平浪静的泻湖。礁上海水淹不到的地方，椰树、棕榈树参天，藤葛密织，海鸟众多。
+                </p>
+            </li>
+            </br>
+            <li>
+                <img src="/static/images/south-africa-997543_1280.jpg" class="images">
+                <p>到南非游览，千万不可错过到非洲尖端好望角参观的机会。好望角距离开普敦约六十公里，是大西洋和印度洋的交汇处。其实，好望角是一个突出的小山岬，过去曾被称为暴风角，因为这里的天气恶劣，昔日不少航船都在此处遇险。但在印度洋航线通航后，闻说当时的葡萄牙王便把她改名为好望角，因为登上角点，可以眺望到大西洋和印度洋的壮大景色。好望角为太平洋与印度洋冷暖流水的分界，气象万变，景象奇妙，耸立于大海，更有高逾二千尺的达卡马峰，危崖峭壁，卷浪飞溅，令人眼界大开。
+                </p>
+            </li>
+            </br>
+            <li>
+                <img src="/static/images/golden-temple-397886_1280.jpg" class="images">
+                <p>
+                    金庙位于印度边境城市阿姆利则。作为锡克教的`圣地，阿姆利则意为“花蜜池塘”。当年只是印度教改革派分支的锡克教，经过几代教徒的不懈努力，最终于16世纪发展成完全独立的宗教，为此，当年锡克教第4代祖师罗姆·达斯曾修建了一座水池，名为“花蜜池塘”，阿姆利则由此得名。而金庙则由锡克教第5代祖师阿尔琼1589年主持建造，1601年完工，迄今已有400年历史。因该庙门及大小19个圆形寺顶均贴满金箔，在阳光照耀下，分外璀璨夺目，一直以来被锡克人尊称为“上帝之殿”。印度金庙也叫维西瓦纳特庙，是瓦腊纳西寺庙中地位最高的一座，位于恒河浴场以北的街上，在原来的维西瓦纳特庙被莫卧儿王朝的一位皇帝摧毁后于1776年重建。这座庙宇供奉湿婆大神，对前来瓦腊纳西朝拜的信徒，它是个必访之地，但非印度教徒是不得入内的，一般的游客只能在金庙对面的楼房高处俯瞰庙内情景，也可从寺院后面小道的壁洞中窥视庙宇内部。金庙塔楼高耸，镀金的圆塔顶映着蓝色的晴空，显出一派庄严富丽的气派，据说，金色的庙顶共用去了880公斤的黄金，所以称它为“金殿”。
+                </p>
+            </li>
+            </br>
+            <li>
+                <img src="/static/images/cultural-tourism-5264542_1280.jpg" class="images">
+                <p>
+                    坐落于印度古都阿格的泰姬陵，是世界七大奇迹之一，到印度旅游的人士，大都是慕它的盛名而来。这座世界七大建筑奇迹背后其实有一段哀怨缠绵的历史，了解它的历史的背景，确能增加观赏泰姬陵的趣味.17世纪莫卧儿帝国皇帝沙杰汉为纪念其爱妃慕塔芝玛，动用了数万名工人，以宝石镶饰修建陵寝，图案之细致令人叫绝。泰姬陵最引人瞩目的是用纯白大理石砌建而成的主体建筑，皇陵上下左右工整对称，中央圆顶高六十二米，令人叹为观止。泰姬陵的前面是一条清澄水道，水道两旁种植有果树和柏树，分别象征生命和死亡。
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="video-banner2">
+        <video autoplay muted loop playsinline>
+            <source src="/static/images/yun.mp4" type="video/mp4">
+            <source src="your-video-file.webm" type="video/webm">
+            您的浏览器不支持视频标签。
+        </video>
+    </div>
+    <div class="about">
+        <h2 class="div_title3">>>关于</h2>
+        <p>
+            这是一个关于我们网站的介绍。搭建网站前后共花了3个星期的时间编写，大一新生边学边写，边写边改，边改边学，最后完成了这个网站。网站的主要功能是推荐景点，介绍景点，还有一些其他的功能。<br>网站的后端使用Flask框架，前端使用Bootstrap5框架，数据库使用MySQL，服务器使用腾讯云服务器。网站的源码已经上传到GitHub，欢迎大家提出宝贵意见。
+        </p>
+    </div>
+
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="http://www.baidu.com" target="_blank"
+                    class="nav-link px-2 text-muted">技术链接</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">技术团体：无</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">免责声明</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">QQ</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">作者:sea</a></li>
+        </ul>
+        <p class="text-center text-muted">© 2024 Company, Inc</p>
+    </footer>
+</body>
+
+</html>
