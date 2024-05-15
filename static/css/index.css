@@ -1,0 +1,314 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: auto;
+    height: 4000px;
+}
+
+.video-banner {
+    width: 120%;
+    position: relative;
+    /* 或指定宽度 */
+    height: 830px;
+    /* 根据需要设定高度 */
+    overflow: hidden;
+    top: -90px;
+    left: -9%;
+    z-index: -1;
+}
+
+.video-banner video {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    /* 确保视频填充整个容器 */
+}
+
+#header {
+    width: 100%;
+    top: 0px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+}
+
+#header li {
+    position: relative;
+    left: 33%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#header a:hover {
+    background-color: #00b3ff;
+    color: #ffffff;
+    text-decoration-line: circle;
+}
+
+#header a {
+    color: #3d3d3d;
+}
+
+.container {
+    position: relative;
+    height: 800px;
+}
+
+.banner_content {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.banner_content h1,
+h4 {
+    position: relative;
+    margin-top: 55%;
+    animation: banner_content 6s;
+    opacity: 0;
+}
+
+@keyframes banner_content {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
+
+.banner_content h2 {
+    animation: h2_title 5s;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+    opacity: 0;
+}
+
+@keyframes h2_title {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.banner_content h4 {
+    margin-top: 10px;
+    margin-left: 55px;
+}
+
+.table {
+    position: relative;
+    height: 800px;
+    padding: 70px 0px;
+    background-image: url('/static/images/boat-8614314_1280.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    backdrop-filter: blur(1px);
+    z-index: -1;
+}
+
+table {
+    position: relative;
+    left: 5%;
+    width: 89%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+}
+
+.table tr {
+    border: none;
+    margin-top: 10px;
+}
+
+.table td {
+    padding: 15px 0px;
+    width: 220px;
+    height: 260px;
+    border: #979797 solid 1px;
+    border: none;
+    border-radius: 12px;
+}
+
+.td_title_active {
+    animation: td 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes td {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.table td:hover {
+    color: #00b3ff;
+}
+
+.table img {
+    width: 220px;
+    height: 250px;
+    margin: 0 30px;
+    border-radius: 12px;
+}
+
+.table span {
+    color: black;
+    text-decoration: none;
+    font-size: 26px;
+    padding: 0px 20px;
+    display: inline-block;
+}
+
+.div_title {
+    margin-top: 10px;
+    width: 250px;
+    position: relative;
+    top: 0px;
+    left: 7%;
+    color: white;
+    text-shadow: rgba(255, 255, 255, 0.6);
+}
+
+.div_title2 {
+    margin-top: 10px;
+    width: 250px;
+    position: relative;
+    top: 80px;
+    left: 7%;
+    color: white;
+    text-shadow: rgba(255, 255, 255, 0.6);
+}
+.div_title3 {
+    margin-top: 10px;
+    width: 250px;
+    position: relative;
+    left: 7%;
+    color: white;
+    text-shadow: rgba(255, 255, 255, 0.6);
+}
+.show {
+    width: 100%;
+    height: 1900px;
+    position: relative;
+    top: -16px;
+    background-image: url('/static/images/rocks-15712_960_720.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    z-index: -1;
+}
+
+.show ul {
+    position: relative;
+    left: 50%;
+    margin-top: 100px;
+    transform: translate(-50%, 0%);
+    width: 1340px;
+    height: 1750px;
+    padding: 50px 0px 50px 0px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+}
+
+.show li {
+    position: relative;
+    left: 50%;
+    margin-top: 100px;
+    transform: translate(-50%, 0%);
+    width: 1200px;
+    height: 220px;
+}
+
+.show p {
+    color: rgb(0, 0, 0);
+}
+
+#li_first {
+    margin-top: 0px;
+}
+
+.images {
+    width: 420px;
+    height: 260px;
+    float: left;
+    margin-right: 50px;
+    border-radius: 11px;
+}
+
+.images_active {
+    width: 0px;
+    height: 0px;
+    float: left;
+    margin-right: 50px;
+    border-radius: 11px;
+    animation: images 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes images {
+    from {
+        width: 0px;
+        height: 0px;
+        opacity: 0;
+    }
+
+    to {
+        width: 420px;
+        height: 260px;
+        opacity: 1;
+    }
+}
+
+.video-banner2 {
+    width: 110%;
+    position: relative;
+    /* 或指定宽度 */
+    height: 300px;
+    /* 根据需要设定高度 */
+    overflow: hidden;
+    top: 0px;
+    left: -9%;
+    z-index: -1;
+}
+
+.video-banner2 video {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    /* 确保视频填充整个容器 */
+}
+
+.about {
+    width: 100%;
+    height: 100px;
+    position: relative;
+    top: -6%;
+}
+.about p{
+    position: relative;
+    margin-top: 20px;
+    left: 7%;
+    color: white;
+    font-size: 15px;
+    text-shadow:black 0.1em 0.1em 0.2em;
+}

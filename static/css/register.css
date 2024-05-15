@@ -1,0 +1,54 @@
+body {
+    background-image: url('/static/images/background.jpg');
+    background-position: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0 auto;
+}
+
+div {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 13px;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    position: relative;
+    left: 25px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+input {
+    width: 250px;
+    height: 30px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255);
+}
+
+.btn {
+    margin-left: 70px;
+    width: 100px;
+    border: none;
+    background-color: #ffffff;
+}
+
+div:hover {
+    box-shadow: rgba(212, 212, 212, 0.7) 0px 0px 10px 0px;
+}
+
+input:hover {
+    box-shadow: rgba(212, 212, 212, 0.7) 0px 0px 10px 0px;
+}
