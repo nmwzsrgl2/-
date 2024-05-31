@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap5 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/static//css//manager.css">
+    <!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>管理系统</title>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;" id='sidebar'>
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
+            <span class="fs-4">管理系统</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/manager" class="nav-link link-dark" aria-current="page">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#home"></use>
+                    </svg>
+                    首页
+                </a>
+            </li>
+            <li>
+                <a href="/manager/other" class="nav-link link-dark">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#table"></use>
+                    </svg>
+                    其他
+                </a>
+            </li>
+            <li>
+                <a href="/manager/users_manager" class="nav-link active">
+                    <svg class="bi pe-none me-2" width="16" height="16">
+                        <use xlink:href="#grid"></use>
+                    </svg>
+                    用户管理
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="#" width="32" height="32" class="rounded-circle me-2" id='avatar'>
+                <strong id='username'></strong>
+            </a>
+            <ul class="dropdown-menu text-small shadow">
+                <li><a class="dropdown-item" href="/manager/option" id="logout">设置</a></li>
+                <li><a class="dropdown-item" href="/manager/logout" id="logout">退出</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="bround" id='bround'>
+        <div class="container">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">添加用户</button>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>邮箱</th>
+                    <th>操作</th>
+                </tr>
+
+            </thead>
+            <tbody id='user-list'>
+
+                {% for user in users%}
+                <tr>
+                    <td>{{user[0]}}</td>
+                    <td>{{user[1]}}</td>
+                    <td>{{user[2]}}</td>
+                    <td>{{user[3]}}</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" value="{{user}}" id='edit' data-bs-toggle="modal"
+                            data-bs-target="#myModal2" onclick="getinfo($(this).val())">修改</button>
+                        <button class="btn btn-danger" value="{{user[0]}}" id='delete'
+                            onclick="deleteUser($(this).val())">删除</button>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">创建用户</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- 模态框内容 -->
+                <div class="modal-body">
+                    <div class="container mt-3" id='container'>
+                        <form action="" method="post">
+                            <div class="mb-3 mt-3">
+                                <label for="text" class="form-label">用户名:</label>
+                                <input type="text" class="form-control" id="text" placeholder='输入用户名' name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pwd" class="form-label">密码:</label>
+                                <input type="password" class="form-control" id="pwd" placeholder="输入密码" name="password">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">邮箱:</label>
+                                <input type="email" class="form-control" id="email" placeholder="输入邮箱" name="email">
+                            </div>
+                            <button type="button" class="btn btn-primary" id='submit'>提交</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">修改用户</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- 模态框内容 -->
+                <div class="modal-body">
+                    <div class="container mt-3" id='container'>
+                        <form action="" method="post">
+                            <div class="mb-3 mt-3">
+                                <label for="text" class="form-label">用户名:</label>
+                                <input type="text" class="form-control" id="text2" placeholder="输入用户名" name="username">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pwd" class="form-label">密码:</label>
+                                <input type="password" class="form-control" id="pwd2" placeholder="输入密码"
+                                    name="password">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">邮箱:</label>
+                                <input type="email" class="form-control" id="email2" placeholder="输入邮箱" name="email">
+                            </div>
+                            <button type="button" class="btn btn-primary" id='edit_submit'>提交</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    //获取用户名和头像
+    document.getElementById('username').innerText = document.cookie.split("=")[1]
+    document.getElementById('avatar').src = '/manager/option/get_image?/' + document.cookie.split("=")[1]+'.jpg'
+    
+    //添加用户
+    function submitForm() {
+        $.ajax({
+            url: '/manager/add_user',
+            type: 'post',
+            data: {
+                username: $('#text').val(),
+                password: $('#pwd').val(),
+                email: $('#email').val()
+            },
+            success: function (resp) {
+                if (resp.status == 200) {
+                    window.location.reload();
+                }
+                else {
+                    alert("添加失败");
+                }
+            }, error: function (resp) {
+                console.log(resp)
+            }
+        })
+    }
+    document.getElementById('submit').onclick = function () {
+        submitForm();
+    }
+    function deleteUser(id) {
+        $.ajax({
+            url: '/manager/delete_user',
+            type: 'post',
+            data: {
+                user_id: id
+            },
+            success: function (resp) {
+                if (resp.status == 200) {
+                    window.location.reload();
+                } else {
+                    alert("删除失败");
+                }
+            }, error: function (resp) {
+                console.log(resp)
+            }
+
+        })
+
+    }
+
+
+    var user_id
+    function getinfo(data) {
+
+        data = data.replace("[", "").replace("]", "");
+        for (var i = 0; i < 6; i++) {
+            data = data.replace("'", "");
+            data = data.replace(" ", "");
+        }
+        data = data.split(",");
+        user_id = data;
+        document.getElementById('text2').placeholder = data[1];
+        document.getElementById('pwd2').placeholder = data[2];
+        document.getElementById('email2').placeholder = data[3];
+    }
+    function editUser(data) {
+        var username;
+        var password;
+        var email;
+        if ($('#text2').val() == "") {
+            username = data[1];
+        }
+        else {
+            username = $('#text2').val();
+        }
+        if ($('#pwd2').val() == "") {
+            password = data[2];
+        }
+        else {
+            password = $('#pwd2').val();
+        }
+        if ($('#email2').val() == "") {
+            email = data[3];
+        }
+        else {
+            email = $('#email2').val();
+        }
+        $.ajax({
+            url: '/manager/edit_user',
+            type: 'post',
+            data: {
+                user_id: data[0],
+                username: username,
+                password: password,
+                email: email
+            },
+            success: function (resp) {
+                if (resp.status == 200) {
+                    window.location.reload();
+                } else {
+                    alert("编辑失败");
+                }
+            }, error: function (resp) {
+                console.log(resp)
+            }
+        })
+    }
+
+    document.getElementById('edit_submit').onclick = function () {
+        editUser(user_id);
+    }
+
+</script>
+
+</html>
