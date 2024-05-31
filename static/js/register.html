@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/register.css">
+    <script src="/static/js/register.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title>注册</title>
+</head>
+
+<body>
+
+    <div>
+        <h1>注册</h1>
+        <form method="post">
+            <input type="text" name="username" placeholder="用户名" id="username" onchange="username_check()">
+            <br>
+            <input type="password" name="password" placeholder="密码" id = 'password' onchange="password_check()">
+            <br>
+            <input type="password" name="confirm_password" placeholder="确认密码" id = 'confirm_password' onchange="password_confirm()">
+            <br>
+            <input type="email" name="email" placeholder="邮箱" id = 'email' onchange="email_check()">
+            <br>
+            <input type="button" value="注册" class="btn" id = 'submit' onclick="register()">
+        </form>
+    </div>
+
+</body>
+<script>
+    function register_form(){
+        $.ajax({
+            url: '/registering',
+            type: 'POST',
+            data: {
+                username: $('#username').val(),
+                password: $('#confirm_password').val(),
+                email: $('#email').val()
+            },
+            success:function(data){
+                if (data.status == 200) {
+                    alert('注册成功');
+                    window.location.href = data.url;    
+                }else{
+                    alert('注册失败');
+                }
+
+            },
+            error:function(data){
+                console.log(data);
+            }
+        });
+    }
+</script>
+</html>

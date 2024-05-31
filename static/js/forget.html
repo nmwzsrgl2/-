@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忘记密码</title>
+    <link rel="stylesheet" href="/static/css/forget.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body onkeydown="enter(event)"> <!-- 监听回车键 -->
+    <div class="forget">
+        <h1>找回密码</h1>
+        <p>请输入您的邮箱，我们将发送验证码到您的邮箱，您可以输入验证码找回密码。</p>
+        <form action="/login/reset" method="post">
+            <input type="email" name="email" placeholder="输入邮箱" id="email" onchange="chinkinput()" on="chinkinput()"
+                required><br>
+            <span id="email_error" style="display:none;color: red;font-size: 13px;"></span><br>
+            <input type="text" name="captcha" placeholder="输入验证码" id='captcha' onchange="chinkinput()"
+                onkeydown="enter(event)" required><br>
+            <span id="captcha_error" style="display: none;color: red;font-size: 13px;"></span><br>
+            <button type="button" onclick="sub()" id="submit">确定</button>
+            <button type="button" onclick='send_mail()' id="send_captcha">发送验证码</button>
+        </form>
+    </div>
+</body>
+<script>
+    function send_mail() {
+        var email = document.getElementById("email").value;
+        var button = document.getElementById("send_captcha");
+        button.disabled = true;
+        var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if (pattern.test(email) == true) {
+            var countdown = setInterval(button_recovery, 1000);
+            var times = 60;
+            function button_recovery() {
+                times = times - 1;
+                button.innerText = times + "秒后重试";
+                if (times == 0) {
+                    button.disabled = false;
+                    button.innerText = "重新发送";
+                    clearInterval(countdown)
+
+                }
+            }
+            $.ajax({
+                url: "/login/send_email/",
+                type: "get",
+                data: {
+                    mail: email
+                },
+                success: function (data) {
+                    null;
+                },
+                error: function (xhr, status, error) {
+                    alert("发送失败，请检查网络连接！");
+                    clearInterval(countdown)
+                    button.innerText = "重新发送";
+                    button.disabled = false;
+                }
+            });
+        }
+        // if (email == "") {
+        //     document.getElementById('email_error').innerText = '邮箱不能为空！'
+        //     button.disabled = false;
+        // }
+        if (pattern.test(email) == false) {
+            alert("请输入正确的邮箱格式！");
+            button.disabled = false;
+        }
+    };
+
+    function sub() {
+        var long = document.getElementById("captcha").value.length;
+        var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+        if (document.getElementById("email").value == "") {
+            document.getElementById("email_error").style.display = "block";
+            document.getElementById("email_error").innerHTML = "邮箱不能为空！";
+        } if (pattern.test(document.getElementById("email").value) == false) {
+            document.getElementById("email_error").style.display = "block";
+            document.getElementById("email_error").innerHTML = "请输入正确的邮箱格式！";
+        } if (long != 5) {
+            document.getElementById("captcha_error").style.display = "block";
+            document.getElementById("captcha_error").innerHTML = "验证码错误！";
+
+        } if (pattern.test(document.getElementById("email").value) == true && long == 5) {
+            $.ajax({
+                url: "/login/reset/",
+                type: "get",
+                data: {
+                    email: document.getElementById("email").value,
+                    captcha: document.getElementById("captcha").value
+                },
+                success: function (data) {
+                    if (data.status == "success") {
+                        window.location.href = data.url;
+
+                    } else {
+                        alert("验证码错误！");
+                        document.getElementById("captcha").value = "";
+                    }
+                },
+            });
+        }
+    }
+
+</script>
+<script>
+    function enter(event) {
+        if (event.keyCode == 13) {
+            sub();
+        }
+    }
+</script>
+<script>
+    function chinkinput() {
+        if (document.getElementById("email").value != "" || document.getElementById("captcha").value != "") {
+            document.getElementById("email_error").style.display = "none";
+            document.getElementById("captcha_error").style.display = "none";
+        } else {
+            console.log("空");
+        }
+    }
+</script>
+
+</html>
